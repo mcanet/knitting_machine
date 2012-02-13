@@ -55,7 +55,7 @@ void setupSerialPort(){
  //println(Serial.list());
  try{
    String portName = Serial.list()[0];
-   println(portName);
+   println("portname:"+portName);
    myPort = new Serial(this, portName, 9600);
    serialIsConnected = true;
  }catch(Exception e){

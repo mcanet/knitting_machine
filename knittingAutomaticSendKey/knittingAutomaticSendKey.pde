@@ -32,8 +32,8 @@ PImage img;
 PFont font;
 
 void setup(){
-  size(620,600);
-  font = loadFont("Dialog-48.vlw"); 
+  size(1024,900);
+  font = loadFont("Dialog-12.vlw"); 
 
  setupKnitting();
  fillArrayWithImage("spam.png");
@@ -42,20 +42,19 @@ void setup(){
 
 void draw(){
   background(51);
-  
-  image(img,325,20);
+  image(img,700,20);
   
   if(insertingPixelsPattern){
     color(255,0,0);
-    textFont(font, 32); 
-    text("ROW:"+Integer.toString(rows-rowtPixelPointer), 325, 130);
-    text("COLUMN:"+Integer.toString(columntPixelPointer), 325,180);
+    textFont(font, 14); 
+    text("ROW:"+Integer.toString(rows-rowtPixelPointer), 880, 130);
+    text("COLUMN:"+Integer.toString(columntPixelPointer), 880,180);
     int percentage = 100-(int)(((((float)rowtPixelPointer*(float)cols)+(float)columntPixelPointer) / ((float)cols*(float)rows))*100);
-    text("PERCENTAGE:"+Integer.toString(percentage)+"%", 325,230);
+    text("PERCENTAGE:"+Integer.toString(percentage)+"%", 880,230);
   }
   
   
-  int cubSize = 5;
+  int cubSize = 3;
   for(int x=0;x<cols;x++){
      for(int y=0;y<rows;y++){
        if(pixelArray[x][y]==1){
@@ -153,6 +152,16 @@ void keyPressed(){
     columntPixelPointer = 0;
     insertPatternPointer = 0;
     timeStartSending = millis();
+ }
+ if(key=='f'){
+    String loadPath = selectInput();  // Opens file chooser
+    if (loadPath == null) {
+      // If a file was not selected
+      println("No file was selected...");
+    } else {
+      // If a file was selected, print path to file
+      fillArrayWithImage(loadPath);
+    }
  }
 }
 
