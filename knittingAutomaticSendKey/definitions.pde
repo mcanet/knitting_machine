@@ -69,6 +69,7 @@ void fillArrayWhite(){
        pixelArray[i][y]=1;
      }
    }
+   
 }
 
 void fillArrayBlack(){
@@ -104,7 +105,50 @@ void fillArrayWithImage(String imgPath){
       }
     }
   }
+  println("Before:");
+  for(int i=0;i<insertPattern.length;i++){
+    print(insertPattern[i]);
+  }
+  println("");
+  
+  // pass numbers to String
+  String[] colsStr = Integer.toString(cols).split("");
+  String[] rowsStr = Integer.toString(rows).split("");
+  println("E:"+Integer.toString(cols)+"-"+Integer.toString(rows));
+  if(cols<10){
+    insertPattern[3] = colsStr[1];
+    insertPattern[4] = "X";
+    insertPattern[5] = "X";
+    println("10");
+  }else if(cols<100){
+    insertPattern[3] = colsStr[1];
+    insertPattern[4] = colsStr[2];
+    insertPattern[5] = "X";
+  }else if(cols>=100){
+    insertPattern[3] = colsStr[1];
+    insertPattern[4] = colsStr[2];
+    insertPattern[5] = colsStr[3];
+  }
+  if(rows<10){
+    insertPattern[8] = rowsStr[1];
+    insertPattern[9] = "X";
+    insertPattern[10] = "X";
+  }else if(rows<100){
+    insertPattern[8] = rowsStr[1];
+    insertPattern[9] = rowsStr[2];
+    insertPattern[10] = "X";
+  }else if(rows>=100){
+    insertPattern[8] = rowsStr[1];
+    insertPattern[9] = rowsStr[2];
+    insertPattern[10] = rowsStr[3];
+  }
+  println("After:");
+  for(int i=0;i<insertPattern.length;i++){
+    print(insertPattern[i]);
+  }
+  println("");
 }
+
 
 boolean isBlackPixel(int x, int y){
   return  pixelArray[x][y]==0;
